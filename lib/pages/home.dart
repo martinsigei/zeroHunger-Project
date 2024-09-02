@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 //import 'package:flutter/widgets.dart';
 import 'package:zerohunger_logistics_app/pages/details.dart';
+import 'package:zerohunger_logistics_app/pages/details2.dart';
+import 'package:zerohunger_logistics_app/pages/details3.dart';
+import 'package:zerohunger_logistics_app/pages/details4.dart';
+import 'package:zerohunger_logistics_app/pages/details5.dart';
+import 'package:zerohunger_logistics_app/pages/details6.dart';
 import 'package:zerohunger_logistics_app/widget/widget_support.dart';
 
 class Home extends StatefulWidget {
@@ -87,36 +92,36 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 30.0),
-                    Container(
-                      margin: EdgeInsets.all(4),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          padding: EdgeInsets.all(14),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  "images/dairy.jpeg",
-                                  height: 150,
-                                  width: 150,
-                                  fit: BoxFit.cover,
+                     SizedBox(width: 30.0),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details2()),);
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(4),
+                        child: Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: EdgeInsets.all(14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipOval(
+                                  child: Image.asset(
+                                    "images/dairy.jpeg",
+                                    height: 150,
+                                    width: 150,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              Text("Dairy Products",
-                                  style: AppWidget.SemiBoldTextFeildStyle()),
-                              SizedBox(height: 5.0),
-                              Text(
-                                "Milk, Cheese, Yoghurt",
-                                style: AppWidget.LightTextFeildStyle(),
-                              ),
-                              SizedBox(height: 5.0),
-                              Text("\$40/Litre",
-                                  style: AppWidget.SemiBoldTextFeildStyle())
-                            ],
+                                Text("Dairy Products", style: AppWidget.SemiBoldTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("Milk, Cheese, Yoghurt", style: AppWidget.LightTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("\$40/Litre", style: AppWidget.SemiBoldTextFeildStyle()),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -124,74 +129,74 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              SizedBox(height: 30.0,width: 50.0,),
+                  SizedBox(height: 30.0, width: 50.0),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Container(
-                      margin: EdgeInsets.all(5),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          padding: EdgeInsets.all(14),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  "images/cereals.jpeg",
-                                  height: 150,
-                                  width: 150,
-                                  fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details3()));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(5),
+                        child: Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: EdgeInsets.all(14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipOval(
+                                  child: Image.asset(
+                                    "images/cereals.jpeg",
+                                    height: 150,
+                                    width: 150,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              Text("Grains & Staples",
-                                  style: AppWidget.SemiBoldTextFeildStyle()),
-                              SizedBox(height: 5.0),
-                              Text(
-                                "Rice,Flour,Beans,grains",
-                                style: AppWidget.LightTextFeildStyle(),
-                              ),
-                              SizedBox(height: 5.0),
-                              Text("\$36/Kilogram",
-                                  style: AppWidget.SemiBoldTextFeildStyle())
-                            ],
+                                Text("Grains & Staples", style: AppWidget.SemiBoldTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("Rice, Flour, Beans, Grains", style: AppWidget.LightTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("\$36/Kilogram", style: AppWidget.SemiBoldTextFeildStyle()),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(width: 30.0),
-                    Container(
-                      margin: EdgeInsets.all(4),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          padding: EdgeInsets.all(14),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  "images/meat.webp",
-                                  height: 150,
-                                  width: 150,
-                                  fit: BoxFit.cover,
+                     SizedBox(width: 30.0),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details4()));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(4),
+                        child: Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: EdgeInsets.all(14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipOval(
+                                  child: Image.asset(
+                                    "images/meat.webp",
+                                    height: 150,
+                                    width: 150,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              Text("Meat & Poultry",
-                                  style: AppWidget.SemiBoldTextFeildStyle()),
-                              SizedBox(height: 5.0),
-                              Text(
-                                "Beef,Chicken and Pork",
-                                style: AppWidget.LightTextFeildStyle(),
-                              ),
-                              SizedBox(height: 5.0),
-                              Text("\$20/Kilogram",
-                                  style: AppWidget.SemiBoldTextFeildStyle())
-                            ],
+                                Text("Meat & Poultry", style: AppWidget.SemiBoldTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("Beef, Chicken and Pork", style: AppWidget.LightTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("\$20/Kilogram", style: AppWidget.SemiBoldTextFeildStyle()),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -204,69 +209,69 @@ class _HomeState extends State<Home> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Container(
-                      margin: EdgeInsets.all(5),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          padding: EdgeInsets.all(14),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  "images/discount.jpeg",
-                                  height: 150,
-                                  width: 150,
-                                  fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details5()));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(5),
+                        child: Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: EdgeInsets.all(14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipOval(
+                                  child: Image.asset(
+                                    "images/discount.jpeg",
+                                    height: 150,
+                                    width: 150,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              Text("Seasonal Discounts",
-                                  style: AppWidget.SemiBoldTextFeildStyle()),
-                              SizedBox(height: 5.0),
-                              Text(
-                                "Order before deadline",
-                                style: AppWidget.LightTextFeildStyle(),
-                              ),
-                              SizedBox(height: 5.0),
-                              Text("\$20/Product",
-                                  style: AppWidget.SemiBoldTextFeildStyle())
-                            ],
+                                Text("Seasonal Discounts", style: AppWidget.SemiBoldTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("Order before deadline", style: AppWidget.LightTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("\$20/Product", style: AppWidget.SemiBoldTextFeildStyle()),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(width: 30.0),
-                    Container(
-                      margin: EdgeInsets.all(4),
-                      child: Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          padding: EdgeInsets.all(14),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipOval(
-                                child: Image.asset(
-                                  "images/bulk.jpeg",
-                                  height: 150,
-                                  width: 150,
-                                  fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details6()));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(4),
+                        child: Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(20),
+                          child: Container(
+                            padding: EdgeInsets.all(14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ClipOval(
+                                  child: Image.asset(
+                                    "images/bulk.jpeg",
+                                    height: 150,
+                                    width: 150,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                              Text("Bulk Purchase Deals",
-                                  style: AppWidget.SemiBoldTextFeildStyle()),
-                              SizedBox(height: 5.0),
-                              Text(
-                                "Bulk Purchase Deals",
-                                style: AppWidget.LightTextFeildStyle(),
-                              ),
-                              SizedBox(height: 5.0),
-                              Text("\$142/Person",
-                                  style: AppWidget.SemiBoldTextFeildStyle())
-                            ],
+                                Text("Bulk Purchase Deals", style: AppWidget.SemiBoldTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("Bulk Purchase Deals", style: AppWidget.LightTextFeildStyle()),
+                                SizedBox(height: 5.0),
+                                Text("\$142/Person", style: AppWidget.SemiBoldTextFeildStyle()),
+                              ],
+                            ),
                           ),
                         ),
                       ),
