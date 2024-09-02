@@ -67,30 +67,9 @@ The onboarding feature provides new users with a brief overview of the applicati
 Content Model
 Defined in lib/widgets/content_model.dart:
 
-dart
-Copy code
-class OnboardingContent {
-  String image;
-  String title;
-  String description;
 
-  OnboardingContent({required this.description, required this.image, required this.title});
-}
 
-List<OnboardingContent> contents = [
-  OnboardingContent(
-      description: 'We are committed to delivering fresh, quality, and sustainably sourced food products directly from local farmers to your doorstep.',
-      image: "images/screen1.png",
-      title: 'Place bulk orders, customize your selections, and schedule deliveries at your convenience.'),
-  OnboardingContent(
-      description: 'Our available payment methods include: Mobile Money Transfers, Cash on Delivery, and Credit/Debit Cards.',
-      image: 'images/screen2.png',
-      title: 'Enjoy a hassle-free shopping experience with ZeroHunger Logistics.'),
-  OnboardingContent(
-      description: 'Optimizing transportation routes, reducing fuel consumption, and minimizing the carbon footprint of food deliveries.',
-      image: 'images/screen3.png',
-      title: 'Real-time customer orders, minimizing the risk of overproduction and unsold inventory.')
-];
+
 Contributing
 We welcome contributions! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
 
