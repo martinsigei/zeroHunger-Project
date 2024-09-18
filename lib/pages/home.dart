@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
                   children: [
                     GestureDetector(
                       onTap: (){
-                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Details())
+                        Navigator.push(context,MaterialPageRoute(builder: (context)=>Details(price: "10",name: "Fruits",image: "images/fruits.jpeg"),),
                         );
                       },
                       child: Container(
@@ -84,7 +84,7 @@ class _HomeState extends State<Home> {
                                   style: AppWidget.LightTextFeildStyle(),
                                 ),
                                 SizedBox(height: 5.0),
-                                Text("\$25/Kilogram",
+                                Text("\Ksh 250/Kg",
                                     style: AppWidget.SemiBoldTextFeildStyle())
                               ],
                             ),
@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                      SizedBox(width: 30.0),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details2()),);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details2(price: "10",name: "Dairy",)),);
                       },
                       child: Container(
                         margin: EdgeInsets.all(4),
@@ -119,7 +119,7 @@ class _HomeState extends State<Home> {
                                 SizedBox(height: 5.0),
                                 Text("Milk, Cheese, Yoghurt", style: AppWidget.LightTextFeildStyle()),
                                 SizedBox(height: 5.0),
-                                Text("\$40/Litre", style: AppWidget.SemiBoldTextFeildStyle()),
+                                Text("\Ksh 70/Litre", style: AppWidget.SemiBoldTextFeildStyle()),
                               ],
                             ),
                           ),
@@ -136,7 +136,7 @@ class _HomeState extends State<Home> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details3()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details3(price: "10",name: "Cereals",)));
                       },
                       child: Container(
                         margin: EdgeInsets.all(5),
@@ -160,7 +160,7 @@ class _HomeState extends State<Home> {
                                 SizedBox(height: 5.0),
                                 Text("Rice, Flour, Beans, Grains", style: AppWidget.LightTextFeildStyle()),
                                 SizedBox(height: 5.0),
-                                Text("\$36/Kilogram", style: AppWidget.SemiBoldTextFeildStyle()),
+                                Text("\Ksh 120/Kg", style: AppWidget.SemiBoldTextFeildStyle()),
                               ],
                             ),
                           ),
@@ -170,7 +170,7 @@ class _HomeState extends State<Home> {
                      SizedBox(width: 30.0),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details4()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details4(price: "10",name: "Meat",)));
                       },
                       child: Container(
                         margin: EdgeInsets.all(4),
@@ -194,7 +194,7 @@ class _HomeState extends State<Home> {
                                 SizedBox(height: 5.0),
                                 Text("Beef, Chicken and Pork", style: AppWidget.LightTextFeildStyle()),
                                 SizedBox(height: 5.0),
-                                Text("\$20/Kilogram", style: AppWidget.SemiBoldTextFeildStyle()),
+                                Text("\Ksh 400/Kg", style: AppWidget.SemiBoldTextFeildStyle()),
                               ],
                             ),
                           ),
@@ -211,7 +211,7 @@ class _HomeState extends State<Home> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details5()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details5(price: "10",name: "Discount",)));
                       },
                       child: Container(
                         margin: EdgeInsets.all(5),
@@ -235,7 +235,7 @@ class _HomeState extends State<Home> {
                                 SizedBox(height: 5.0),
                                 Text("Order before deadline", style: AppWidget.LightTextFeildStyle()),
                                 SizedBox(height: 5.0),
-                                Text("\$20/Product", style: AppWidget.SemiBoldTextFeildStyle()),
+                                Text("\Ksh 100/Product", style: AppWidget.SemiBoldTextFeildStyle()),
                               ],
                             ),
                           ),
@@ -245,7 +245,7 @@ class _HomeState extends State<Home> {
                     SizedBox(width: 30.0),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details6()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Details6(price: "10",name: "Bulk",)));
                       },
                       child: Container(
                         margin: EdgeInsets.all(4),
@@ -269,7 +269,7 @@ class _HomeState extends State<Home> {
                                 SizedBox(height: 5.0),
                                 Text("Bulk Purchase Deals", style: AppWidget.LightTextFeildStyle()),
                                 SizedBox(height: 5.0),
-                                Text("\$142/Person", style: AppWidget.SemiBoldTextFeildStyle()),
+                                Text("\Ksh 2000/Order", style: AppWidget.SemiBoldTextFeildStyle()),
                               ],
                             ),
                           ),
@@ -344,7 +344,7 @@ class _HomeState extends State<Home> {
                                 style: AppWidget.LightTextFeildStyle(),
                               ),
                               SizedBox(height: 5.0),
-                              Text("\$99/Kilometer",
+                              Text("\Ksh 400/Kilometer",
                                   style: AppWidget.SemiBoldTextFeildStyle())
                             ],
                           ),
