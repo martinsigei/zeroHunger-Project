@@ -2,13 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:zerohunger_logistics_app/widget/widget_support.dart';
 
 class Details2 extends StatefulWidget{
-  const Details2 ({super.key});
+  final String price;  // Add this
+  final String name; 
+  const Details2 ({
+    Key? key,
+    required this.price,
+    required this.name,
+  }) : super(key: key);
+  
 
   @override
   State<Details2> createState()=> _Details2State();
 }
   class  _Details2State extends State<Details2>{
-    int a=1;
+    int a=1,total=10;
+
+        @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    total=int.parse(widget.price);
+  }
     
     @override
     Widget build(BuildContext context){
@@ -42,6 +56,7 @@ class Details2 extends StatefulWidget{
                         onTap: () {
                           if(a>1){
                           --a;
+                          total=total-int.parse(widget.price);
                           }
                           setState(() {
                             
@@ -57,8 +72,9 @@ class Details2 extends StatefulWidget{
                       Text(a.toString(),style: AppWidget.SemiBoldTextFeildStyle(),),
                        SizedBox(width: 20.0,),
                       GestureDetector(
-                        onTap: () {
+                         onTap: () {
                           ++a;
+                          total=total+int.parse(widget.price);
                           setState(() {
                             
                           });
@@ -92,7 +108,7 @@ class Details2 extends StatefulWidget{
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                           Text("Total Price",style: AppWidget.SemiBoldTextFeildStyle(),),
-                           Text("\$25/Kilogram",style: AppWidget.HeadTextFeildStyle(),)
+                           Text("\Ksh "+total.toString(),style: AppWidget.HeadTextFeildStyle(),)
                         ],),
                         Container(
                            width: MediaQuery.of(context).size.width/2,
