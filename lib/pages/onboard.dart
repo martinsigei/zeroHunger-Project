@@ -68,7 +68,7 @@ class Onboard extends StatefulWidget{
               _controller.nextPage(duration: Duration(milliseconds: 100), curve: Curves.bounceIn);
             },
             child: Container(
-              decoration: BoxDecoration(color: Colors.red,borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration(color: Color.fromARGB(255, 52, 155, 55),borderRadius: BorderRadius.circular(20)),
               height: 60,
               margin: EdgeInsets.all(40),
               width: double.infinity,
