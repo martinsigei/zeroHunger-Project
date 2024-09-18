@@ -45,7 +45,7 @@ To start the application on an emulator or connected device:
 bash
 Copy code
 
-```flutter run```
+``` flutter run ```
 
 Project Structure
 
@@ -71,7 +71,7 @@ Defined in lib/widgets/content_model.dart:
 
 
 Contributing
-We welcome contributions! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
+I welcome contributions! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
 
 Bug Reports and Feature Requests
 Please use the issue tracker to report any bugs or request new features.
@@ -81,11 +81,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Contact
 For any inquiries or support, please reach out to us at sigeimartin03@gmail.com.
-
-
-
-markdown
-Copy code
 
 ### Key Sections
 - **Introduction:** Brief overview of ZeroHunger Logistics.
