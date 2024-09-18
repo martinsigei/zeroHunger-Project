@@ -1,14 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:zerohunger_logistics_app/service/database.dart';
+import 'package:zerohunger_logistics_app/service/shared_pref.dart';
 import 'package:zerohunger_logistics_app/widget/widget_support.dart';
 
 class Details extends StatefulWidget{
-  const Details ({super.key});
+   String price;  // Add this
+   String name; 
+   String image; 
+   Details ({
+    Key? key,
+    required this.price,
+    required this.name,
+    required this.image,
+  }) : super(key: key);
+  
 
   @override
   State<Details> createState()=> _DetailsState();
 }
   class  _DetailsState extends State<Details>{
-    int a=1;
+    int a=1,total=10;
+    String? id;
+
+    getthesharedpref()async{
+      id=await SharedPreferenceHelper().getUserId();
+      setState(() {
+        
+      });
+    }
+    ontheLoad()async{
+      await getthesharedpref();
+      setState(() {
+        
+      });
+    }
+
+    @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ontheLoad();
+    total=int.parse(widget.price);
+  }
     
     @override
     Widget build(BuildContext context){
@@ -42,6 +76,7 @@ class Details extends StatefulWidget{
                         onTap: () {
                           if(a>1){
                           --a;
+                          total=total-int.parse(widget.price);
                           }
                           setState(() {
                             
@@ -59,6 +94,7 @@ class Details extends StatefulWidget{
                       GestureDetector(
                         onTap: () {
                           ++a;
+                          total=total+int.parse(widget.price);
                           setState(() {
                             
                           });
@@ -92,29 +128,56 @@ class Details extends StatefulWidget{
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                           Text("Total Price",style: AppWidget.SemiBoldTextFeildStyle(),),
-                           Text("\$25/Kilogram",style: AppWidget.HeadTextFeildStyle(),)
+                           Text("\Ksh "+total.toString(),style: AppWidget.HeadTextFeildStyle(),)
                         ],),
-                        Container(
-                           width: MediaQuery.of(context).size.width/2,
-                          padding: EdgeInsets.all(8),
-                          decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                            Text("Add to Cart",style: TextStyle(color: Colors.white,fontSize: 16.0,fontFamily: 'Poppins'),),
-                            SizedBox(width: 30.0,),
-                            Container(
+                        GestureDetector(
+                          onTap: () async{
+                            if (id != null && id!.isNotEmpty) {
+                            Map<String,dynamic>addFoodtoCart={
+                              "Name":widget.name,
+                              "Quantity":a.toString(),
+                              "Total":total.toString(),
+                              "Image":widget.image
+                            };
+                            await DatabaseMethods().addFoodtoCart(addFoodtoCart, id!);
+                                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.orangeAccent,
+                            content: Text(
+                              "Food Added To Cart",
+                              style: TextStyle(fontSize: 18.0),
+                              ),),);
+                                            } else {
+                          // Handle the case where userId is null or empty
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Failed to add to cart. User not logged in!")),
+                          );
+                          }
+  
 
-                             
-                              padding: EdgeInsets.all(3),
-                              decoration: BoxDecoration(
-                                color: Colors.black45,borderRadius: BorderRadius.circular(8),
+                          },
+                          
+                          child: Container(
+                             width: MediaQuery.of(context).size.width/2,
+                            padding: EdgeInsets.all(8),
+                            decoration: BoxDecoration(color: Colors.black,borderRadius: BorderRadius.circular(10)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                              Text("Add to Cart",style: TextStyle(color: Colors.white,fontSize: 16.0,fontFamily: 'Poppins'),),
+                              SizedBox(width: 30.0,),
+                              Container(
+                          
+                               
+                                padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(
+                                  color: Colors.black45,borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Icon(Icons.shopping_cart_outlined,color: Colors.white,),
                               ),
-                              child: Icon(Icons.shopping_cart_outlined,color: Colors.white,),
-                            ),
-                             SizedBox(width: 10.0,),
-                          ],),
-
+                               SizedBox(width: 10.0,),
+                            ],),
+                          
+                          ),
                         )
                       ],),
                     )
