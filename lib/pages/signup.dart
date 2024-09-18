@@ -1,4 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:zerohunger_logistics_app/pages/bottomnav.dart';
 import 'package:zerohunger_logistics_app/pages/login.dart';
 import 'package:zerohunger_logistics_app/widget/widget_support.dart';
 
@@ -8,12 +12,57 @@ class SignUp extends StatefulWidget{
   @override
   State<SignUp> createState()=> _SignUpState();
 }
+
   class  _SignUpState extends State<SignUp>{
-    
+
+  String email="", Password= "",name="";
+
+  TextEditingController namecontroller=new TextEditingController();
+
+  TextEditingController passwordcontroller=new TextEditingController();
+
+  TextEditingController mailcontroller=new TextEditingController();
+
+  final _formkey=GlobalKey<FormState>();
+
+
+  registration()async{
+if (Password!=null){
+  try{
+    UserCredential userCredential=await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password:Password);
+
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+       backgroundColor: Colors.redAccent,
+      content:Text( "Registered Successfully",style:TextStyle(fontSize: 20.0),),),);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>BottomNav() ));
+
+  }on FirebaseException catch(e){
+    if(e.code=='weak-password'){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+         backgroundColor: Colors.orangeAccent,
+        content: Text(
+          "Password provided is too weak",
+          style: TextStyle(fontSize: 18.0),
+          ),),);
+
+    }
+    else if(e.code=="email-already-in-use"){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Colors.orangeAccent,
+        content: Text("Account Already Exists",
+        style: TextStyle(fontSize: 18.0),
+        ),),);
+    }
+  }
+}
+  }
+
     @override
     Widget build(BuildContext context){
       return Scaffold(
-        body: Container(
+        body: SingleChildScrollView(  // Added Scrollable View
+      child: Container(
+        height: MediaQuery.of(context).size.height,
           child: Stack(
           children: [
           Container(
@@ -46,42 +95,80 @@ class SignUp extends StatefulWidget{
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height/2,
         decoration: BoxDecoration(color: Colors.grey,borderRadius: BorderRadius.circular(20)),
-        child: Column(children: [
-          SizedBox(height: 11.0,),
-          Text("Sign Up",style: AppWidget.HeadTextFeildStyle(),),
-          SizedBox(
-            height: 30.0,
-          ),
-          TextField(
-            decoration: InputDecoration(hintText: 'Name',hintStyle: AppWidget.SemiBoldTextFeildStyle(),prefixIcon: Icon(Icons.person_2_outlined),
-          ),),
-          
-          SizedBox(
-            height: 30.0,
-          ),
-          TextField(
-            decoration: InputDecoration(hintText: 'Email',hintStyle: AppWidget.SemiBoldTextFeildStyle(),prefixIcon: Icon(Icons.email_outlined),
-          ),),
+        child: Form(
+          key: _formkey,
+          child: Column(children: [
+            SizedBox(height: 11.0,),
+            Text("Sign Up",style: AppWidget.HeadTextFeildStyle(),),
             SizedBox(
-            height: 30.0,
-          ),
-          TextField(
-            obscureText: true,
-            decoration: InputDecoration(hintText: 'Password',hintStyle: AppWidget.SemiBoldTextFeildStyle(),prefixIcon: Icon(Icons.password_rounded),
-          ),
-          ),
-            SizedBox(height: 60.0,),
-            Material(
-              elevation:5.0,
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8.0),
-                width: 200,
-                 decoration: BoxDecoration(color: Color.fromARGB(255, 52, 155, 55),borderRadius: BorderRadius.circular(20)),
-                child: Center(child: Text("Sign Up",style: TextStyle(color: Colors.black,fontSize: 18.0,fontFamily: 'Poppins1',fontWeight: FontWeight.bold),)),
-              ),
+              height: 30.0,
             ),
-        ],
+            TextFormField(
+              controller: namecontroller,
+              validator: (value) {
+                if(value==null||value.isEmpty){
+                  return 'Please Enter Name';
+                }
+                return null;
+              },
+              decoration: InputDecoration(hintText: 'Name',hintStyle: AppWidget.SemiBoldTextFeildStyle(),prefixIcon: Icon(Icons.person_2_outlined),
+            ),),
+            
+            SizedBox(
+              height: 30.0,
+            ),
+            TextFormField(
+              controller: mailcontroller,
+          
+              validator: (value) {
+                if(value==null||value.isEmpty){
+                  return 'Please Enter E-mail';
+                }
+                return null;
+              },
+              decoration: InputDecoration(hintText: 'Email',hintStyle: AppWidget.SemiBoldTextFeildStyle(),prefixIcon: Icon(Icons.email_outlined),
+            ),),
+              SizedBox(
+              height: 30.0,
+            ),
+            TextFormField(
+              controller: passwordcontroller,
+        
+              validator: (value) {
+                if(value==null||value.isEmpty){
+                  return 'Please Enter Password';
+                }
+                return null;
+              },
+              obscureText: true,
+              decoration: InputDecoration(hintText: 'Password',hintStyle: AppWidget.SemiBoldTextFeildStyle(),prefixIcon: Icon(Icons.password_rounded),
+            ),
+            ),
+              SizedBox(height: 60.0,),
+              GestureDetector(
+                onTap: () async{
+                  if(_formkey.currentState!.validate()){
+                    setState(() {
+                      email=mailcontroller.text;
+                      name=namecontroller.text;
+                      Password=passwordcontroller.text;
+                    });
+                  }
+                  registration();
+                },
+                child: Material(
+                  elevation:5.0,
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    width: 200,
+                     decoration: BoxDecoration(color: Color.fromARGB(255, 52, 155, 55),borderRadius: BorderRadius.circular(20)),
+                    child: Center(child: Text("Sign Up",style: TextStyle(color: Colors.black,fontSize: 18.0,fontFamily: 'Poppins1',fontWeight: FontWeight.bold),)),
+                  ),
+                ),
+              ),
+          ],
+          ),
         ),
            ),
      ),
@@ -95,7 +182,7 @@ class SignUp extends StatefulWidget{
     ),
    
         ],),),
-      );
+        ));
     }
   }
 
