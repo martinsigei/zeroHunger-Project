@@ -62,10 +62,36 @@ assets/: Contains images and other static resources
 pubspec.yaml: Dependency and asset configuration
 
 Onboarding Screens
-The onboarding feature provides new users with a brief overview of the application’s benefits and features.
+List<OnboardingContent> contents = [
+  OnboardingContent(
+      description: 
+      ,
+   image: <img src="./images/screenshot.png" alt="screen2" width="400">
+ 
+ ),
 
-Content Model
-Defined in lib/widgets/content_model.dart:
+      
+  OnboardingContent(
+      description: 
+      image: <img src="./images/screenshot1.png" alt="screen2" width="400">
+
+ ),
+
+  OnboardingContent(
+      description:
+        image: <img src="./images/screenshot2.png" alt="screen2" width="400">
+ ),
+
+   OnboardingContent(
+      description: ,
+   image: <img src="./images/screenshot4.png" alt="screen2" width="400">
+),
+
+   OnboardingContent(
+      description: ,
+   image: <img src="./images/screenshot5.png" alt="screen2" width="400">
+   
+)
 
 
 
