@@ -1,4 +1,3 @@
-# zeroHunger-Project
 # zerohunger_logistics_app
 
 ZeroHunger Logistics is a digital platform committed to bridging the gap from farm to table by connecting local farmers directly with consumers and traders. Our mission is to deliver fresh, quality, and sustainably sourced food products while promoting food security and reducing waste. The platform allows users to place bulk orders, customize selections, and schedule deliveries at their convenience.
@@ -32,36 +31,39 @@ Install Dependencies
 
 Run the following command to get all the required dependencies:
 
-
+bash
 Copy code
-
-``` flutter pub get```
-
-
+flutter pub get
 Run the Application
 
 To start the application on an emulator or connected device:
 
 bash
 Copy code
-
-``` flutter run ```
-
+flutter run
 Project Structure
-
 lib/: Contains the main application code
-
 pages/: Screens for onboarding, signup, and main functionality
-
 widgets/: Reusable UI components
-
 models/: Data models for the app (e.g., OnboardingContent)
-
 assets/: Contains images and other static resources
-
 pubspec.yaml: Dependency and asset configuration
-
 Onboarding Screens
+The onboarding feature provides new users with a brief overview of the application’s benefits and features.
+
+Content Model
+Defined in lib/widgets/content_model.dart:
+
+dart
+Copy code
+class OnboardingContent {
+  String image;
+  String title;
+  String description;
+
+  OnboardingContent({required this.description, required this.image, required this.title});
+}
+
 List<OnboardingContent> contents = [
   OnboardingContent(
       description: 
@@ -92,12 +94,9 @@ List<OnboardingContent> contents = [
    image: <img src="./images/screenshot5.png" alt="screen2" width="400">
    
 )
-
-
-
-
+];
 Contributing
-I welcome contributions! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
+We welcome contributions! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
 
 Bug Reports and Feature Requests
 Please use the issue tracker to report any bugs or request new features.
@@ -106,7 +105,12 @@ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-For any inquiries or support, please reach out to us at sigeimartin03@gmail.com.
+For any inquiries or support, please reach out to us at support@zerohungerlogistics.com.
+
+Thank you for supporting ZeroHunger Logistics and helping us work towards a world with Zero Hunger!
+
+markdown
+Copy code
 
 ### Key Sections
 - **Introduction:** Brief overview of ZeroHunger Logistics.
@@ -118,6 +122,7 @@ For any inquiries or support, please reach out to us at sigeimartin03@gmail.com.
 - **License:** Licensing information.
 - **Contact:** Contact details for support or inquiries.
 
+Feel free to modify or expand upon this template as needed!
 
 
 
