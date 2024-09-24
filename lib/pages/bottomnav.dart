@@ -19,14 +19,14 @@ class BottomNav extends StatefulWidget{
     late Home homepage;
     late Profile profile;
      late Order order;
-      late Wallet wallet;
+      late PayBillsPage wallet;
 
       @override
     void initState(){
       homepage=Home();
       order=Order();
       profile=Profile();
-      wallet=Wallet();
+      wallet=PayBillsPage();
       pages=[homepage,order,wallet,profile];
       super.initState();
     }
