@@ -1,292 +1,117 @@
 import 'package:flutter/material.dart';
-import 'package:zerohunger_logistics_app/widget/widget_support.dart';
 
-class Wallet extends StatefulWidget{
-  const Wallet ({super.key});
+// Defining the PayBillsPage class, which is a StatelessWidget
+class PayBillsPage extends StatelessWidget {
+  // Controller to handle input for the bill number
+  final TextEditingController billNumberController = TextEditingController();
+  // Controller to handle input for the account number
+  final TextEditingController accountNumberController = TextEditingController();
+  // Controller to handle input for the amount
+  final TextEditingController amountController = TextEditingController();
+
+  // List of available bill types for the dropdown menu
+  final List<String> billTypes = ['DSTV', 'Water', 'Netflix', 'Showmax'];
+
+  // Variable to store the currently selected bill type
+  String selectedBillType = 'DSTV'; // Default selection
 
   @override
-  State<Wallet> createState()=> _WalletState();
-}
-  class  _WalletState extends State<Wallet>{
-
-   // int selectedIndex;
-
-    int price=0;
-    
-    @override
-    Widget build(BuildContext context){
-      return Scaffold(
-        body: Container(
-          margin: EdgeInsets.only(top: 60.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-          Material(
-            elevation: 2.0,
-            child: Container(
-              padding: EdgeInsets.only(bottom: 10.0),
-              child: Material(child: Center(child: Text("Wallet",style: AppWidget.HeadTextFeildStyle(),))))),
-              SizedBox(height: 30.0,),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 10.0),
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(color: Color(0xFF2F2F2F2)),
-                child: Row(children: [
-                Image.asset("images/wallet.png",height: 60,width: 60,fit: BoxFit.cover,
-                ),
-                SizedBox(width: 40.0,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                  Text("Your Wallet",style: AppWidget.LightTextFeildStyle(),),
-                  SizedBox(height: 5.0,),
-                  Text("\Ksh"+"100",style: AppWidget.boldTextFeildStyle(),),
-                ],)
-                ],),
-              ),
-              SizedBox(height: 20.0,),
-             Padding(
-               padding: const EdgeInsets.only(left: 20.0),
-               child: Text("Add Money",style: AppWidget.SemiBoldTextFeildStyle(),),
-             ),
-             SizedBox(height: 10.0,),
-             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color:Color(0xFFE9E2E2)),borderRadius: BorderRadius.circular(5),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Pay Bills'), // Title displayed in the AppBar
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0), // Padding around the content
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center, // Center the column vertically
+          children: [
+            // Dropdown button for selecting the type of bill
+            DropdownButton<String>(
+              value: selectedBillType, // Current selected bill type
+              onChanged: (String? newValue) {
+                // Update selected bill type when a new value is chosen
+                selectedBillType = newValue!;
+              },
+              items: billTypes.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value, // The value for the dropdown item
+                  child: Row(
+                    children: [
+                      // Placeholder icon for each bill type (replace with actual icons)
+                      Icon(Icons.receipt, size: 24), // Icon for the bill type
+                      SizedBox(width: 8), // Space between icon and text
+                      Text(value), // Display the bill type text
+                    ],
                   ),
-                child: Text("\Ksh"+"100",style: AppWidget.SemiBoldTextFeildStyle(),
-                ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color:Color(0xFFE9E2E2)),borderRadius: BorderRadius.circular(5),
-                  ),
-                child: Text("\Ksh"+"500",style: AppWidget.SemiBoldTextFeildStyle(),
-                ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color:Color(0xFFE9E2E2)),borderRadius: BorderRadius.circular(5),
-                  ),
-                child: Text("\Ksh"+"1000",style: AppWidget.SemiBoldTextFeildStyle(),
-                ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color:Color(0xFFE9E2E2)),borderRadius: BorderRadius.circular(5),
-                  ),
-                child: Text("\Ksh"+"2000",style: AppWidget.SemiBoldTextFeildStyle(),
-                ),
-                ),
-            ],
+                );
+              }).toList(), // Convert the list of bill types to dropdown items
             ),
-            SizedBox(height: 20.0,),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 20.0),
-              padding: EdgeInsets.symmetric(vertical: 12.0),
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Color(0xFF008080),borderRadius: BorderRadius.circular(8),
+            SizedBox(height: 16.0), // Space between the dropdown and input fields
+            
+            // Input field for entering the bill number
+            TextField(
+              controller: billNumberController, // Connects the controller to the input field
+              decoration: InputDecoration(
+                labelText: 'Bill Number', // Label shown in the input field
+                border: OutlineInputBorder(), // Outline border for the input field
               ),
-              child: Center(child: Text("Add Money",style: TextStyle(color:Colors.white,fontSize: 16.0, fontFamily: 'Poppins',fontWeight: FontWeight.bold),),),
-            )
+            ),
+            SizedBox(height: 16.0), // Space between input fields
+            
+            // Input field for entering the account number
+            TextField(
+              controller: accountNumberController, // Connects the controller to the input field
+              decoration: InputDecoration(
+                labelText: 'Account Number', // Label shown in the input field
+                border: OutlineInputBorder(), // Outline border for the input field
+              ),
+            ),
+            SizedBox(height: 16.0), // Space between input fields
+            
+            // Input field for entering the amount to pay
+            TextField(
+              controller: amountController, // Connects the controller to the input field
+              keyboardType: TextInputType.number, // Show numeric keyboard for input
+              decoration: InputDecoration(
+                labelText: 'Amount', // Label shown in the input field
+                border: OutlineInputBorder(), // Outline border for the input field
+              ),
+            ),
+            SizedBox(height: 20.0), // Space between input fields and button
+            
+            // Button to trigger the payment action
+            ElevatedButton(
+              onPressed: () {
+                // Logic to handle payment would go here
+                final billNumber = billNumberController.text;
+                final accountNumber = accountNumberController.text;
+                final amount = amountController.text;
+
+                // Show a message with the payment details (for demonstration)
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text('Payment Confirmation'),
+                      content: Text('Paying $amount for $selectedBillType\nBill Number: $billNumber\nAccount Number: $accountNumber'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Close the dialog
+                          },
+                          child: Text('OK'), // Button text
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Text('Send Payment'), // Button label
+            ),
           ],
-        ),),
-      );
-    }
+        ),
+      ),
+    );
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_paystack/flutter_paystack.dart';
-// import 'package:zerohunger_logistics_app/widget/widget_support.dart';
-
-// class Wallet extends StatefulWidget {
-//   const Wallet({super.key});
-
-//   @override
-//   State<Wallet> createState() => _WalletState();
-// }
-
-// class _WalletState extends State<Wallet> {
-//   final plugin = PaystackPlugin();
-//   int price = 0;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     // Initialize Paystack with your public key
-//     plugin.initialize(publicKey: 'your_paystack_test_public_key'); // Replace with your Paystack test public key
-//   }
-
-//   void startPayment(int amount) async {
-//     // Create a charge object
-//     Charge charge = Charge()
-//       ..amount = amount * 100 // Amount is in kobo
-//       ..email = 'user@example.com' // Replace with user's email
-//       ..currency = 'KES' // Currency
-//       ..reference = DateTime.now().millisecondsSinceEpoch.toString();
-
-//     // Use Paystack plugin to checkout
-//     CheckoutResponse response = await plugin.checkout(
-//       context,
-//       method: CheckoutMethod.card, // Select the payment method
-//       charge: charge,
-//       fullscreen: false,
-//       logo: Image.asset("images/wallet.png", height: 60, width: 60),
-//     );
-
-//     // Handle the response from Paystack
-//     if (response.status == true) {
-//       // Payment was successful
-//       ScaffoldMessenger.of(context).showSnackBar(
-//         SnackBar(content: Text('Payment Successful')),
-//       );
-//     } else {
-//       // Payment failed
-//       ScaffoldMessenger.of(context).showSnackBar(
-//         SnackBar(content: Text('Payment Failed: ${response.message}')),
-//       );
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Container(
-//         margin: EdgeInsets.only(top: 60.0),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Material(
-//               elevation: 2.0,
-//               child: Container(
-//                 padding: EdgeInsets.only(bottom: 10.0),
-//                 child: Material(
-//                   child: Center(
-//                     child: Text(
-//                       "Wallet",
-//                       style: AppWidget.HeadTextFeildStyle(),
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             SizedBox(height: 30.0),
-//             Container(
-//               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-//               width: MediaQuery.of(context).size.width,
-//               decoration: BoxDecoration(color: Color(0xFF2F2F2F2)),
-//               child: Row(
-//                 children: [
-//                   Image.asset(
-//                     "images/wallet.png",
-//                     height: 60,
-//                     width: 60,
-//                     fit: BoxFit.cover,
-//                   ),
-//                   SizedBox(width: 40.0),
-//                   Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       Text(
-//                         "Your Wallet",
-//                         style: AppWidget.LightTextFeildStyle(),
-//                       ),
-//                       SizedBox(height: 5.0),
-//                       Text(
-//                         "\Ksh" + "100",
-//                         style: AppWidget.boldTextFeildStyle(),
-//                       ),
-//                     ],
-//                   ),
-//                 ],
-//               ),
-//             ),
-//             SizedBox(height: 20.0),
-//             Padding(
-//               padding: const EdgeInsets.only(left: 20.0),
-//               child: Text(
-//                 "Add Money",
-//                 style: AppWidget.SemiBoldTextFeildStyle(),
-//               ),
-//             ),
-//             SizedBox(height: 10.0),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//               children: [
-//                 for (var amount in [100, 500, 1000, 2000])
-//                   GestureDetector(
-//                     onTap: () {
-//                       setState(() {
-//                         price = amount;
-//                       });
-//                     },
-//                     child: Container(
-//                       padding: EdgeInsets.all(5),
-//                       decoration: BoxDecoration(
-//                         border: Border.all(color: Color(0xFFE9E2E2)),
-//                         borderRadius: BorderRadius.circular(5),
-//                       ),
-//                       child: Text(
-//                         "\Ksh$amount",
-//                         style: AppWidget.SemiBoldTextFeildStyle(),
-//                       ),
-//                     ),
-//                   ),
-//               ],
-//             ),
-//             SizedBox(height: 20.0),
-//             GestureDetector(
-//               onTap: () {
-//                 startPayment(price);
-//               },
-//               child: Container(
-//                 margin: EdgeInsets.symmetric(vertical: 20.0),
-//                 padding: EdgeInsets.symmetric(vertical: 12.0),
-//                 width: MediaQuery.of(context).size.width,
-//                 decoration: BoxDecoration(
-//                   color: Color(0xFF008080),
-//                   borderRadius: BorderRadius.circular(8),
-//                 ),
-//                 child: Center(
-//                   child: Text(
-//                     "Add Money",
-//                     style: TextStyle(
-//                       color: Colors.white,
-//                       fontSize: 16.0,
-//                       fontFamily: 'Poppins',
-//                       fontWeight: FontWeight.bold,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+}
