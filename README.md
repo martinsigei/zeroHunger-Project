@@ -30,25 +30,25 @@ Follow these instructions to set up the project on your local machine.
 Install Dependencies
 
 Run the following command to get all the required dependencies:
-
-bash
-Copy code
+```
 flutter pub get
+```
 Run the Application
 
 To start the application on an emulator or connected device:
-
-bash
-Copy code
+```
 flutter run
-Project Structure
-lib/: Contains the main application code
-pages/: Screens for onboarding, signup, and main functionality
-widgets/: Reusable UI components
-models/: Data models for the app (e.g., OnboardingContent)
-assets/: Contains images and other static resources
-pubspec.yaml: Dependency and asset configuration
-Onboarding Screens
+```
+## Project Structure
+<ul>
+<li>lib/: Contains the main application code
+<li>pages/: Screens for onboarding, signup, and main functionality
+<li>widgets/: Reusable UI components
+<li>models/: Data models for the app (e.g., OnboardingContent)
+<li>assets/: Contains images and other static resources
+<li>pubspec.yaml: Dependency and asset configuration<ul/>
+   
+## Onboarding Screens
 The onboarding feature provides new users with a brief overview of the application’s benefits and features.
 
 Content Model
@@ -68,7 +68,7 @@ List<OnboardingContent> contents = [
   OnboardingContent(
       description: 
       ,
-   image: <img src="./images/screenshot.png" alt="screen2" width="400">
+    <img src="./images/screenshot.png" alt="screen2" width="400">
  
  ),
 
@@ -92,6 +92,11 @@ List<OnboardingContent> contents = [
    OnboardingContent(
       description: ,
    image: <img src="./images/screenshot5.png" alt="screen2" width="400">
+   
+),
+    OnboardingContent(
+      description: ,
+   image: <img src="./images/screenshot7.png" alt="screen2" width="400">
    
 )
 ];
