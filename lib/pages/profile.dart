@@ -1,4 +1,4 @@
-import 'dart:io';  
+import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:random_string/random_string.dart';
 import 'package:zerohunger_logistics_app/service/shared_pref.dart';
 import 'package:zerohunger_logistics_app/service/auth.dart';
+import 'package:zerohunger_logistics_app/pages/login.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // Firebase Auth import
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -18,7 +20,7 @@ class _ProfileState extends State<Profile> {
   final ImagePicker _picker = ImagePicker();
   dynamic selectedImage;
   String? profile, name, email;
-  bool loading = true;  // Loading state
+  bool loading = true; // Loading state
 
   Future getImage() async {
     if (kIsWeb) {
@@ -55,12 +57,21 @@ class _ProfileState extends State<Profile> {
   }
 
   Future getSharedPrefData() async {
-    profile = await SharedPreferenceHelper().getUserProfile();
-    name = await SharedPreferenceHelper().getUserName();
-    email = await SharedPreferenceHelper().getUserEmail();
-    setState(() {
-      loading = false; // Data loading is complete
-    });
+    User? user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      name = user.displayName ?? "";
+      email = user.email ?? "No Email";
+      profile = user.photoURL; // Get profile picture URL
+
+      print("Profile: $profile, Name: $name, Email: $email");
+
+      setState(() {
+        loading = false; // Data loading is complete
+      });
+    } else {
+      print("No user logged in");
+    }
   }
 
   @override
@@ -107,7 +118,7 @@ class _ProfileState extends State<Profile> {
                                       },
                                       child: profile == null
                                           ? Image.asset(
-                                              "images/boy.jpg",
+                                              "images/photo3.jpeg",
                                               height: 120,
                                               width: 120,
                                               fit: BoxFit.cover,
@@ -130,7 +141,7 @@ class _ProfileState extends State<Profile> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              name ?? "Unknown User",
+                              name ?? "",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 25.0,
@@ -143,28 +154,31 @@ class _ProfileState extends State<Profile> {
                       )
                     ],
                   ),
-                  SizedBox(height: 20.0),
-                  buildInfoTile(Icons.person, "Name", name ?? "N/A"),
+                 
                   SizedBox(height: 30.0),
                   buildInfoTile(Icons.email, "Email", email ?? "N/A"),
                   SizedBox(height: 30.0),
                   buildInfoTile(Icons.description, "Terms and Conditions", ""),
                   SizedBox(height: 30.0),
                   buildActionTile(Icons.delete, "Delete Account", () {
-                    AuthMethods().deleteuser();
+                    AuthMethods().deleteUser();
                   }),
                   SizedBox(height: 30.0),
                   buildActionTile(Icons.logout, "LogOut", () async {
-                    print("Logout clicked");  // Check if the tap is detected
-                    bool success = await AuthMethods().SignOut();
-                    if (success) {
-                      // Navigate back or show a confirmation
-                      print("User logged out successfully");
-                    } else {
-                      // Handle failure
-                      print("Logout failed");
-                    }
-                  }),
+  print("Logout clicked");  // Check if the tap is detected
+  bool success = await AuthMethods().SignOut();
+  if (success) {
+    // Navigate to the login page after successful logout
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => LogIn() ), // Assuming LoginPage is the name of the login screen
+    );
+    print("User logged out successfully");
+  } else {
+    // Handle failure
+    print("Logout failed");
+  }
+}),
                 ],
               ),
             ),
