@@ -100,22 +100,17 @@ List<OnboardingContent> contents = [
    
 )
 ];
-Contributing
+
+## Contributing
 We welcome contributions! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
 
-Bug Reports and Feature Requests
+## Bug Reports and Feature Requests
 Please use the issue tracker to report any bugs or request new features.
 
-License
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Contact
-For any inquiries or support, please reach out to us at support@zerohungerlogistics.com.
-
 Thank you for supporting ZeroHunger Logistics and helping us work towards a world with Zero Hunger!
-
-markdown
-Copy code
 
 ### Key Sections
 - **Introduction:** Brief overview of ZeroHunger Logistics.
