@@ -25,7 +25,7 @@ Follow these instructions to set up the project on your local machine.
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/zerohunger-logistics.git
+   git clone https://https://github.com/martinsigei/zeroHunger-Project
    cd zerohunger-logistics
 Install Dependencies
 
