@@ -10,10 +10,10 @@ class PayBillsPage extends StatelessWidget {
   final TextEditingController amountController = TextEditingController();
 
   // List of available bill types for the dropdown menu
-  final List<String> billTypes = ['DSTV', 'Water', 'Netflix', 'Showmax'];
+  final List<String> billTypes = ['Delivery Fee', 'Orders', 'Service Fees','Payment Processing Fees', 'Driver Tipping'];
 
   // Variable to store the currently selected bill type
-  String selectedBillType = 'DSTV'; // Default selection
+  String selectedBillType = 'Delivery Fee'; // Default selection
 
   @override
   Widget build(BuildContext context) {
