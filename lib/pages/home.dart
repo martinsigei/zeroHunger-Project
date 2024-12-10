@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text("Hello Martin,", style: AppWidget.boldTextFeildStyle()),
+                Text("Hello,", style: AppWidget.boldTextFeildStyle()),
                 Container(
                   margin: EdgeInsets.only(right: 20.0),
                   padding: EdgeInsets.all(3),
