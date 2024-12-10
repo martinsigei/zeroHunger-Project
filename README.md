@@ -102,7 +102,7 @@ List<OnboardingContent> contents = [
 ];
 
 ## Contributing
-We welcome contributions! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
+Contributions are welccome! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
 
 ## Bug Reports and Feature Requests
 Please use the issue tracker to report any bugs or request new features.
