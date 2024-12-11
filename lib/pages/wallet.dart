@@ -1,113 +1,96 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_paystack/flutter_paystack.dart';
 
-// Defining the PayBillsPage class, which is a StatelessWidget
 class PayBillsPage extends StatelessWidget {
-  // Controller to handle input for the bill number
   final TextEditingController billNumberController = TextEditingController();
-  // Controller to handle input for the account number
   final TextEditingController accountNumberController = TextEditingController();
-  // Controller to handle input for the amount
   final TextEditingController amountController = TextEditingController();
 
-  // List of available bill types for the dropdown menu
-  final List<String> billTypes = ['Delivery Fee', 'Orders', 'Service Fees','Payment Processing Fees', 'Driver Tipping'];
+  final List<String> billTypes = ['Delivery Fee', 'Orders', 'Service Fees', 'Payment Processing Fees', 'Driver Tipping'];
+  String selectedBillType = 'Delivery Fee';
 
-  // Variable to store the currently selected bill type
-  String selectedBillType = 'Delivery Fee'; // Default selection
+  final PaystackPlugin paystackPlugin = PaystackPlugin();
 
   @override
   Widget build(BuildContext context) {
+   
+    paystackPlugin.initialize(publicKey: 'pk_test_318b4240307ce9ac4bf79eb255bf1616f06493aa');
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pay Bills'), // Title displayed in the AppBar
+        title: Text('Pay Bills'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0), // Padding around the content
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Center the column vertically
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Dropdown button for selecting the type of bill
             DropdownButton<String>(
-              value: selectedBillType, // Current selected bill type
+              value: selectedBillType,
               onChanged: (String? newValue) {
-                // Update selected bill type when a new value is chosen
                 selectedBillType = newValue!;
               },
               items: billTypes.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
-                  value: value, // The value for the dropdown item
-                  child: Row(
-                    children: [
-                      // Placeholder icon for each bill type (replace with actual icons)
-                      Icon(Icons.receipt, size: 24), // Icon for the bill type
-                      SizedBox(width: 8), // Space between icon and text
-                      Text(value), // Display the bill type text
-                    ],
-                  ),
+                  value: value,
+                  child: Text(value),
                 );
-              }).toList(), // Convert the list of bill types to dropdown items
+              }).toList(),
             ),
-            SizedBox(height: 16.0), // Space between the dropdown and input fields
-            
-            // Input field for entering the bill number
+            SizedBox(height: 16.0),
             TextField(
-              controller: billNumberController, // Connects the controller to the input field
+              controller: billNumberController,
               decoration: InputDecoration(
-                labelText: 'Bill Number', // Label shown in the input field
-                border: OutlineInputBorder(), // Outline border for the input field
+                labelText: 'Bill Number',
+                border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16.0), // Space between input fields
-            
-            // Input field for entering the account number
+            SizedBox(height: 16.0),
             TextField(
-              controller: accountNumberController, // Connects the controller to the input field
+              controller: accountNumberController,
               decoration: InputDecoration(
-                labelText: 'Account Number', // Label shown in the input field
-                border: OutlineInputBorder(), // Outline border for the input field
+                labelText: 'Account Number',
+                border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16.0), // Space between input fields
-            
-            // Input field for entering the amount to pay
+            SizedBox(height: 16.0),
             TextField(
-              controller: amountController, // Connects the controller to the input field
-              keyboardType: TextInputType.number, // Show numeric keyboard for input
+              controller: amountController,
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'Amount', // Label shown in the input field
-                border: OutlineInputBorder(), // Outline border for the input field
+                labelText: 'Amount',
+                border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 20.0), // Space between input fields and button
-            
-            // Button to trigger the payment action
+            SizedBox(height: 20.0),
             ElevatedButton(
-              onPressed: () {
-                // Logic to handle payment would go here
-                final billNumber = billNumberController.text;
-                final accountNumber = accountNumberController.text;
-                final amount = amountController.text;
+              onPressed: () async {
+                final amountInKobo = int.parse(amountController.text) * 100;
+                final email = 'user@gmail.com';  
 
-                // Show a message with the payment details (for demonstration)
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text('Payment Confirmation'),
-                      content: Text('Paying $amount for $selectedBillType\nBill Number: $billNumber\nAccount Number: $accountNumber'),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop(); // Close the dialog
-                          },
-                          child: Text('OK'), // Button text
-                        ),
-                      ],
-                    );
-                  },
-                );
+                try {
+                  final charge = Charge()
+                    ..amount = amountInKobo
+                    ..email = email
+                    ..reference = 'ref_${DateTime.now().millisecondsSinceEpoch}'
+                    ..currency = 'NGN';
+
+                  final response = await paystackPlugin.checkout(
+                    context,
+                    charge: charge,
+                    method: CheckoutMethod.card,
+                  );
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(response.status ? 'Payment Successful!' : 'Payment Failed!')),
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Error: $e')),
+                  );
+                }
               },
-              child: Text('Send Payment'), // Button label
+              child: Text('Send Payment'),
             ),
           ],
         ),
