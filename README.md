@@ -42,10 +42,10 @@ flutter run
 ## Project Structure
 <ul>
 <li>lib/: Contains the main application code
-<li>pages/: Screens for onboarding, signup, and main functionality
-<li>widgets/: Reusable UI components
-<li>models/: Data models for the app (e.g., OnboardingContent)
-<li>assets/: Contains images and other static resources
+<li>lib/pages/: Screens for onboarding, signup, and main functionality
+<li>lib/widgets/: Reusable UI components
+<li>lib/service/: Contains services for managing authentication and database operations, such as:Firebase Authentication setup and role-based access control.
+<li>images/: Contains images and other static resources
 <li>pubspec.yaml: Dependency and asset configuration<ul/>
    
 ## Onboarding Screens
@@ -102,7 +102,7 @@ List<OnboardingContent> contents = [
 ];
 
 ## Contributing
-Contributions are welccome! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
 
 ## Bug Reports and Feature Requests
 Please use the issue tracker to report any bugs or request new features.
