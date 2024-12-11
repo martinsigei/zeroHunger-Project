@@ -49,61 +49,50 @@ flutter run
 <li>images/: Contains images and other static resources
 <li>pubspec.yaml: Dependency and asset configuration<ul/>
    
+## Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
+
 ## Onboarding Screens
-The onboarding feature provides new users with a brief overview of the application’s benefits and features.
 
-Content Model
-Defined in lib/widgets/content_model.dart:
-
-dart
-Copy code
 class OnboardingContent {
-  String image;
-  String title;
-  String description;
-
   OnboardingContent({required this.description, required this.image, required this.title});
 }
 
 List<OnboardingContent> contents = [
   OnboardingContent(
-      description: 
-      ,
+    description: "Welcome to ZeroHunger Logistics!",
+    image: 
     <img src="./images/screenshot.png" alt="screen2" width="400">
- 
- ),
-
-      
+    ,
+  ),
   OnboardingContent(
-      description: 
-      image: <img src="./images/screenshot1.png" alt="screen2" width="400">
-
- ),
-
+    ,
+    i
+    <img src="./images/screenshot1.png" alt="screen2" width="400">
+    ,
+  ),
   OnboardingContent(
-      description:
-        image: <img src="./images/screenshot2.png" alt="screen2" width="400">
- ),
-
-   OnboardingContent(
-      description: ,
-   image: <img src="./images/screenshot4.png" alt="screen2" width="400">
-),
-
-   OnboardingContent(
-      description: ,
-   image: <img src="./images/screenshot5.png" alt="screen2" width="400">
-   
-),
-    OnboardingContent(
-      description: ,image: <img src="./images/screenshot7.png" alt="screen2" width="400">
-   
-),
- image: <img src="./images/Screenshot8.png" alt="screen2" width="400">
+    ,
+    image: <img src="./images/screenshot2.png" alt="screen2" width="400">
+    ,
+  ),
+  OnboardingContent(
+    ,
+    image: <img src="./images/screenshot4.png" alt="screen2" width="400">
+    ,
+  ),
+  OnboardingContent(
+    ,
+    image: <img src="./images/screenshot5.png" alt="screen2" width="400">
+    ,
+  ),
+  OnboardingContent(
+    ",
+    image: <img src="./images/Screenshot8.png" alt="screen2" width="400">
+    ,
+  ),
 ];
 
-## Contributing
-Contributions are welcome! Please fork the repository and create a pull request with your changes. Ensure that your code follows the established coding standards and is properly documented.
 
 ## Bug Reports and Feature Requests
 Please use the issue tracker to report any bugs or request new features.
