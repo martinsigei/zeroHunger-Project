@@ -94,10 +94,10 @@ List<OnboardingContent> contents = [
    
 ),
     OnboardingContent(
-      description: ,
-   image: <img src="./images/screenshot7.png" alt="screen2" width="400">
+      description: ,image: <img src="./images/screenshot7.png" alt="screen2" width="400">
    
-)
+),
+ image: <img src="./images/Screenshot8.png" alt="screen2" width="400">
 ];
 
 ## Contributing
