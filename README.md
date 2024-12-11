@@ -6,6 +6,7 @@ ZeroHunger Logistics is a digital platform committed to bridging the gap from fa
 
 - **Firebase Authentication:** Secure and simplify user registration and login with email/password, phone number, or third-party providers like Google.
 - **Bulk Ordering:** Easily place bulk orders for groceries and other food products directly from local farmers.
+- **Admin Section:** A dedicated admin panel that allows administrators to add, edit, or delete items available for bulk orders.
 - **Flexible Payment Options:** Pay using Mobile Money Transfers, Cash on Delivery, or Credit/Debit Cards.
 - **User-Friendly Interface:** Simple and easy-to-use app interface designed to enhance the user experience.
 - **Paystack Payment Integration:** Make secure payments using major credit or debit cards, integrated with Paystack.
