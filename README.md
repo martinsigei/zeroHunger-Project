@@ -6,9 +6,8 @@ ZeroHunger Logistics is a digital platform committed to bridging the gap from fa
 
 - **Bulk Ordering:** Easily place bulk orders for groceries and other food products directly from local farmers.
 - **Flexible Payment Options:** Pay using Mobile Money Transfers, Cash on Delivery, or Credit/Debit Cards.
-- **Sustainable Practices:** Optimize transportation routes to reduce fuel consumption and minimize the carbon footprint of food deliveries.
-- **Real-Time Order Management:** Manage orders in real-time, minimizing the risk of overproduction and unsold inventory.
-- **Convenient Delivery Scheduling:** Schedule deliveries according to your needs and availability.
+- **User-Friendly Interface:** Simple and easy-to-use app interface designed to enhance the user experience.
+- **Paystack Payment Integration:** Make secure payments using major credit or debit cards, integrated with Paystack.
 
 ## Getting Started
 
