@@ -98,6 +98,9 @@ Please use the issue tracker to report any bugs or request new features.
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+## Contacts
+Email:sigeimartin03@gmail.com
+
 Thank you for supporting ZeroHunger Logistics and helping us work towards a world with Zero Hunger!
 
 ### Key Sections
