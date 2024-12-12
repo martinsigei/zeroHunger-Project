@@ -54,9 +54,7 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## Onboarding Screens
 
-class OnboardingContent {
-  OnboardingContent({required this.description, required this.image, required this.title});
-}
+Below are some of the previews of the ZeroHunger Logistics Application:
 
 List<OnboardingContent> contents = [
   OnboardingContent(
