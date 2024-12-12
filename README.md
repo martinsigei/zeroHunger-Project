@@ -105,7 +105,7 @@ Thank you for supporting ZeroHunger Logistics and helping us work towards a worl
 - **Features:** Highlighting key functionalities of the platform.
 - **Getting Started:** Steps to set up and run the project.
 - **Project Structure:** Overview of the main folders and files.
-- **Onboarding Screens:** Explanation of the onboarding feature with code snippets.
+- **Onboarding Screens:** Explanation of the onboarding screens.
 - **Contributing:** Guidelines on how to contribute to the project.
 - **License:** Licensing information.
 - **Contact:** Contact details for support or inquiries.
